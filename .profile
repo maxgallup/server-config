@@ -21,4 +21,4 @@ fi
 
 export GOPATH="$HOME/go"
 export PATH="$PATH:/usr/local/go/bin"
-export PATH=/home/max/.cargo/bin:/home/max/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/go/bin:/usr/local/go/bin:/usr/local/go/bin:/usr/local/go/bin
+export PATH=$HOME/.cargo/bin:$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
