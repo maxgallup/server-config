@@ -6,10 +6,13 @@ function error_msg() {
 	echo "$HOME/$1 didn't exist"
 }
 
+sudo apt install git
 
 mkdir $HOME/.config
 
-cd $HOME/.config && git clone https://github.com/maxgallup/server-config.git
+cd $HOME/.config
+
+git clone https://github.com/maxgallup/server-config.git
 
 
 
