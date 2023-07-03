@@ -1,17 +1,33 @@
 #!/bin/bash
 
-echo "Using $1 as home directory"
+echo -n "Using $HOME as home directory, continue? (y/n)"
+read INPUT
+if [ "$INPUT" != "y" ]; then
+	exit 0
+fi
+
+function error_msg() {
+	echo "$HOME/$1 didn't exist"
+}
+
+
+mkdir $HOME/.config
+
+cd $HOME/.config && git clone https://github.com/maxgallup/server-config.git
+
+
+
 
 echo "Backing up old files"
-mv $1/.bashrc $1/.bashrc_bak || echo "$1/.bashrc didn't exist"
-mv $1/.bash_logout $1/.bash_logout_bak || echo "$1/.bash_logout didn't exist"
-mv $1/.bash_aliases $1/.bash_aliases_bak || echo "$1/.bash_aliases didn't exist"
-mv $1/.bash_profile $1/.bash_profile_bak || echo "$1/.bash_profile didn't exist"
-mv $1/.profile $1/.profile_bak || echo "$1/.profile didn't exist"
+mv $HOME/.bashrc $HOME/.bashrc_bak || error_msg .bashrc     #"$HOME/.bashrc didn't exist"
+mv $HOME/.bash_logout $HOME/.bash_logout_bak || error_msg .bash_logout     #"$HOME/.bash_logout didn't exist"
+mv $HOME/.bash_aliases $HOME/.bash_aliases_bak || error_msg .bash_aliases     #"$HOME/.bash_aliases didn't exist"
+mv $HOME/.bash_profile $HOME/.bash_profile_bak || error_msg .bash_profile     #"$HOME/.bash_profile didn't exist"
+mv $HOME/.profile $HOME/.profile_bak || error_msg .profile     #"$HOME/.profile didn't exist"
 
-echo "Linking new files to $1"
-ln -s $1/.config/server-config/.bashrc $1/.bashrc
-ln -s $1/.config/server-config/.bash_logout $1/.bash_logout
-ln -s $1/.config/server-config/.bash_aliases $1/.bash_aliases
-ln -s $1/.config/server-config/.profile $1/.profile
+echo "Linking new files to $HOME"
+ln -s $HOME/.config/server-config/.bashrc $HOME/.bashrc
+ln -s $HOME/.config/server-config/.bash_logout $HOME/.bash_logout
+ln -s $HOME/.config/server-config/.bash_aliases $HOME/.bash_aliases
+ln -s $HOME/.config/server-config/.profile $HOME/.profile
 
