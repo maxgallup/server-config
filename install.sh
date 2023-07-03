@@ -1,10 +1,6 @@
 #!/bin/bash
 
-echo -n "Using $HOME as home directory, continue? (y/n)"
-read INPUT
-if [ "$INPUT" != "y" ]; then
-	exit 0
-fi
+# curl https://raw.githubusercontent.com/maxgallup/server-config/main/install.sh
 
 function error_msg() {
 	echo "$HOME/$1 didn't exist"
